@@ -1,0 +1,20 @@
+[
+    {
+        "from": "K\u0131z\u0131la\u011fa\u00e7",
+        "to": "K\u0131lz\u0131lot",
+        "adults": 1,
+        "children": 0,
+        "currency": "EUR",
+        "selected_car": {
+            "id": 1,
+            "name": "Sedan",
+            "multiplier": 1.3,
+            "price_eur": 130,
+            "distance_km": 100
+        },
+        "name": "mert akpinar",
+        "email": "mert@novitasgroups.com",
+        "phone": "05510258181",
+        "status": "Rezervasyon Onayland\u0131"
+    }
+]

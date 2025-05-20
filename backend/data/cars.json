@@ -1,0 +1,9 @@
+[
+    { "id": 1, "name": "Sedan", "multiplier": 1.3 },
+    { "id": 2, "name": "Minivan", "multiplier": 1.5 },
+    { "id": 3, "name": "SUV", "multiplier": 1.7 },
+    { "id": 4, "name": "VIP Van", "multiplier": 2.0 },
+    { "id": 5, "name": "Economy", "multiplier": 1.1 },
+    { "id": 6, "name": "Luxury", "multiplier": 2.5 },
+    { "id": 7, "name": "Cabrio", "multiplier": 1.8 }
+  ]
