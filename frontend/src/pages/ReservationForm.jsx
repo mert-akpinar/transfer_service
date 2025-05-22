@@ -1,62 +1,94 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "../App.css";
 
 export default function ReservationForm({ formData, selectedCar, onComplete }) {
-  const [info, setInfo] = useState({
+  const [reservationData, setReservationData] = useState({
     name: "",
     email: "",
-    phone: ""
+    phone: "",
+    note: "",
+    date: "",
+    time: "",
+    pickup: "",
+    dropoff: "",
+    extras: [],
   });
+
+  const toggleExtra = (extra) => {
+    setReservationData((prev) => ({
+      ...prev,
+      extras: prev.extras.includes(extra)
+        ? prev.extras.filter((e) => e !== extra)
+        : [...prev.extras, extra],
+    }));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setInfo((prev) => ({ ...prev, [name]: value }));
+    setReservationData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const payload = {
-      ...formData,
-      selected_car: selectedCar,
-      ...info
-    };
-
-    try {
-      const res = await fetch("http://localhost/transfer_service/backend/routes/reserve.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-
-      const result = await res.json();
-
-      if (result.success) {
-        alert("Rezervasyon başarıyla alındı!");
-        onComplete();
-      } else {
-        alert("Hata: " + (result.error || "Bilinmeyen hata"));
-      }
-    } catch (err) {
-      console.error("Rezervasyon hatası:", err);
-      alert("Sunucuya bağlanılamadı.");
-    }
+    console.log("Rezervasyon gönderildi:", reservationData);
+    onComplete();
   };
 
   return (
-    <div>
-      <h2>Bilgilerinizi Girin</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Ad Soyad:</label>
-        <input type="text" name="name" onChange={handleChange} required />
+    <form className="reservation-form-two-column" onSubmit={handleSubmit}>
+      <div className="form-column">
+        <h3>Personal Information</h3>
 
-        <label>Email:</label>
-        <input type="email" name="email" onChange={handleChange} required />
+        <label>Full Name:</label>
+        <input type="text" name="name" value={reservationData.name} onChange={handleChange} required />
 
-        <label>Telefon:</label>
-        <input type="tel" name="phone" onChange={handleChange} required />
+        <label>E-Mail:</label>
+        <input type="email" name="email" value={reservationData.email} onChange={handleChange} required />
 
-        <button type="submit">Rezervasyonu Gönder</button>
-      </form>
-    </div>
+        <label>Phone:</label>
+        <input type="tel" name="phone" value={reservationData.phone} onChange={handleChange} required />
+
+        <label>Do you have a note for us?:</label>
+        <textarea name="note" rows={4} value={reservationData.note} onChange={handleChange} />
+      </div>
+
+      <div className="form-column">
+        <h3>Arrival Transfer Information</h3>
+
+        <label>Meeting Date:</label>
+        <input type="date" name="date" value={reservationData.date} onChange={handleChange} required />
+
+        <label>Meeting Time:</label>
+        <input type="time" name="time" value={reservationData.time} onChange={handleChange} required />
+
+        <label>Pickup Address / Hotel Name:</label>
+        <input type="text" name="pickup" value={reservationData.pickup} onChange={handleChange} required />
+
+        <label>Drop-off Address / Hotel Name:</label>
+        <input type="text" name="dropoff" value={reservationData.dropoff} onChange={handleChange} required />
+
+        <div className="extras-section">
+          <p>Do you want any extras in the vehicle?</p>
+
+          <button
+            type="button"
+            onClick={() => toggleExtra("Baby Seat")}
+            className={`extra-btn ${reservationData.extras.includes("Baby Seat") ? "selected" : ""}`}
+          >
+            {reservationData.extras.includes("Baby Seat") ? "✓ Baby Seat" : "I want a baby seat +"}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => toggleExtra("Cold Drinks")}
+            className={`extra-btn ${reservationData.extras.includes("Cold Drinks") ? "selected" : ""}`}
+          >
+            {reservationData.extras.includes("Cold Drinks") ? "✓ Cold Drinks" : "Cold Drinks +"}
+          </button>
+        </div>
+
+        <button type="submit" className="submit-btn">Confirm Reservation</button>
+      </div>
+    </form>
   );
 }

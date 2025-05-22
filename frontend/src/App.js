@@ -29,12 +29,11 @@ function App() {
       <Routes>
         {/* Kullanıcı ana sayfası */}
         <Route path="/" element={
-          <div className="container">
-            <h1>Transfer Rezervasyon Sistemi</h1>
+          <div className="page-center">
             {!formData ? (
               <Home onNext={handleNext} />
             ) : !selectedCar ? (
-              <CarList formData={formData} onSelectCar={handleCarSelect} />
+              <CarList formData={formData} onCarSelect={handleCarSelect} />
             ) : !complete ? (
               <ReservationForm
                 formData={formData}
@@ -42,7 +41,16 @@ function App() {
                 onComplete={handleComplete}
               />
             ) : (
-              <p>Teşekkürler! Rezervasyon alındı.</p>
+              <p style={{
+                fontSize: "20px",
+                textAlign: "center",
+                backgroundColor: "#fff",
+                padding: "40px",
+                borderRadius: "12px",
+                boxShadow: "0 0 10px rgba(0,0,0,0.1)"
+              }}>
+                Teşekkürler! Rezervasyon alındı.
+              </p>
             )}
           </div>
         } />

@@ -15,6 +15,57 @@
         "name": "mert akpinar",
         "email": "mert@novitasgroups.com",
         "phone": "05510258181",
-        "status": "Rezervasyon Onayland\u0131"
+        "status": "Rezervasyon Ger\u00e7ekle\u015fti"
+    },
+    {
+        "from": "Bo\u011fazkent",
+        "to": "Belek",
+        "adults": 1,
+        "children": 0,
+        "currency": "EUR",
+        "selected_car": {
+            "id": 1,
+            "name": "Sedan",
+            "multiplier": 1.3,
+            "price_eur": 15,
+            "distance_km": 12
+        },
+        "name": "mert akpinar",
+        "email": "mert@novitasgroups.com",
+        "phone": "05510258181"
+    },
+    {
+        "from": "Otogar",
+        "to": "Side",
+        "adults": 1,
+        "children": 0,
+        "currency": "EUR",
+        "selected_car": {
+            "id": 1,
+            "name": "Sedan",
+            "multiplier": 1.3,
+            "price_eur": 105,
+            "distance_km": 80
+        },
+        "name": "mert akpinar",
+        "email": "admin@example.com",
+        "phone": "05510258181"
+    },
+    {
+        "from": "Kalei\u00e7i",
+        "to": "Sorgun",
+        "adults": 1,
+        "children": 0,
+        "currency": "EUR",
+        "selected_car": {
+            "id": 1,
+            "name": "Sedan",
+            "multiplier": 1.3,
+            "price_eur": 100,
+            "distance_km": 77
+        },
+        "name": "mert akpinar",
+        "email": "mert@novitasgroups.com",
+        "phone": "05510258181"
     }
 ]

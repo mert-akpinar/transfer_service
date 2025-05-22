@@ -1,38 +1,363 @@
-.App {
+/* Genel Ayarlar */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #222;
+}
+
+/* Ortak Kart Yapısı */
+.reservation-card {
+  max-width: 500px;
+  margin: 50px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding: 30px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.reservation-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.reservation-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 15px;
+}
+
+.reservation-form label {
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  margin-top: 10px;
+}
+
+.reservation-form input,
+.reservation-form select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Butonlar */
+.submit-btn,
+.back-btn,
+.reserve-btn {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.back-btn {
+  background-color: #e0e0e0;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.back-btn:hover {
+  background-color: #d5d5d5;
+}
+
+/* Buton Grubu */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Hata mesajı */
+.form-error {
+  color: #d93025;
+  font-size: 14px;
+}
+
+/* ======================= */
+/* Araç Seçim Sayfası (Açık Tema) */
+/* ======================= */
+
+.luxury-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+.luxury-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.luxury-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  overflow: hidden;
+}
+
+.luxury-header {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 12px 16px;
+}
+
+.luxury-body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px;
+  gap: 20px;
+}
+
+.luxury-left,
+.luxury-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Slider */
+.luxury-slider {
+  position: relative;
+  height: 200px;
+  background: #fafafa;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.luxury-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
   color: white;
+  border: none;
+  font-size: 20px;
+  padding: 6px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
 }
 
-.App-link {
-  color: #61dafb;
+.slider-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slider-btn:first-of-type {
+  left: 10px;
+}
+
+.slider-btn:last-of-type {
+  right: 10px;
+}
+
+/* Hizmet Listesi */
+.luxury-right h4 {
+  margin-bottom: 8px;
+  color: #007BFF;
+}
+
+.luxury-right ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 16px 0;
+}
+
+.luxury-right li {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Fiyat Bölümü */
+.price-section {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.price-box {
+  background: #28a745;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.note {
+  font-size: 12px;
+  margin: 8px 0;
+  color: #666;
+}
+
+/* Rezervasyon Butonu */
+.reserve-btn {
+  background: #007BFF;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.reserve-btn:hover {
+  background: #0056b3;
+}
+
+.reservation-form-two-column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 40px;
+  background-color: #ffffff;
+  color: #222;
+  border-radius: 12px;
+  max-width: 1100px;
+  margin: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-column h3 {
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  color: #007BFF;
+  font-size: 18px;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+input,
+textarea,
+select {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #222;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.extras-section {
+  margin-top: 20px;
+}
+
+.extra-btn {
+  display: block;
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 10px 14px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.extra-btn:hover {
+  background-color: #eaeaea;
+}
+
+.extra-btn.selected {
+  background-color: #007BFF;
+  color: #fff;
+  border-color: #007BFF;
+}
+
+.submit-btn {
+  background-color: #007BFF;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.reservation-card {
+  margin: 0 auto; /* ← sadece yatay ortalama */
+}
+.reservation-card {
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+.page-center {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
 }

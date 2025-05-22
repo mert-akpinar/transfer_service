@@ -1,5 +1,6 @@
 import { useState } from "react";
 import locations from "../data/locations";
+import "../App.css";
 
 const currencies = ["EUR", "USD", "GBP", "RUB", "TRY"];
 
@@ -16,14 +17,11 @@ export default function Home({ onNext }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // Seçim kontrolü
     if ((name === "from" && value === form.to) || (name === "to" && value === form.from)) {
       setError("Alış ve varış noktası aynı olamaz");
     } else {
-      setError(""); // hata sıfırlanır
+      setError("");
     }
-
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -38,41 +36,40 @@ export default function Home({ onNext }) {
   };
 
   return (
-    <div>
-      <h2>Rezervasyon Yap</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Alış Noktası:</label>
-        <select name="from" onChange={handleChange} required value={form.from}>
+    <div className="reservation-card"> 
+      <form onSubmit={handleSubmit} className="reservation-form">
+        <label htmlFor="from">Alış Noktası:</label>
+        <select id="from" name="from" value={form.from} onChange={handleChange} required>
           <option value="">Seçiniz</option>
-          {locations.map((loc) => (
-            <option key={loc} value={loc}>{loc}</option>
+          {locations.map((loc, idx) => (
+            <option key={idx} value={loc}>{loc}</option>
           ))}
         </select>
 
-        <label>Varış Noktası:</label>
-        <select name="to" onChange={handleChange} required value={form.to}>
+        <label htmlFor="to">Varış Noktası:</label>
+        <select id="to" name="to" value={form.to} onChange={handleChange} required>
           <option value="">Seçiniz</option>
-          {locations.map((loc) => (
-            <option key={loc} value={loc}>{loc}</option>
+          {locations.map((loc, idx) => (
+            <option key={idx} value={loc}>{loc}</option>
           ))}
         </select>
 
-        <label>Yetişkin:</label>
-        <input type="number" name="adults" value={form.adults} onChange={handleChange} min="1" required />
+        <label htmlFor="adults">Yetişkin Sayısı:</label>
+        <input type="number" id="adults" name="adults" value={form.adults} min="1" onChange={handleChange} required />
 
-        <label>Çocuk:</label>
-        <input type="number" name="children" value={form.children} onChange={handleChange} min="0" />
+        <label htmlFor="children">Çocuk Sayısı:</label>
+        <input type="number" id="children" name="children" value={form.children} min="0" onChange={handleChange} />
 
-        <label>Para Birimi:</label>
-        <select name="currency" onChange={handleChange} value={form.currency}>
-          {currencies.map((cur) => (
-            <option key={cur} value={cur}>{cur}</option>
+        <label htmlFor="currency">Para Birimi:</label>
+        <select id="currency" name="currency" value={form.currency} onChange={handleChange}>
+          {currencies.map((cur, idx) => (
+            <option key={idx} value={cur}>{cur}</option>
           ))}
         </select>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <div className="form-error">{error}</div>}
 
-        <button type="submit" disabled={!!error}>Araçları Listele</button>
+        <button type="submit" className="submit-btn">Devam Et</button>
       </form>
     </div>
   );

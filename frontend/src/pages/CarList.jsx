@@ -1,44 +1,85 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
 
-export default function CarList({ formData, onSelectCar }) {
+export default function CarList({ formData, onCarSelect }) {
   const [cars, setCars] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const { from, to } = formData;
+  const [currentIndex, setCurrentIndex] = useState({});
+  const navigate = useNavigate(); // ← Geri butonu için
 
   useEffect(() => {
-    if (!from || !to) return;
-
     const fetchCars = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost/transfer_service/backend/routes/cars.php?from=${from}&to=${to}`
-        );
-        setCars(res.data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Araçlar alınamadı:", err);
-        setLoading(false);
-      }
+      const params = new URLSearchParams(formData).toString();
+      const res = await fetch(`http://localhost/transfer_service/backend/routes/cars.php?${params}`);
+      const data = await res.json();
+      setCars(data);
     };
-
     fetchCars();
-  }, [from, to]);
+  }, [formData]);
 
-  if (loading) return <p>Yükleniyor...</p>;
+  const handlePrev = (index) => {
+    setCurrentIndex((prev) => ({
+      ...prev,
+      [index]: (prev[index] ?? 0) === 0
+        ? cars[index].images.length - 1
+        : prev[index] - 1,
+    }));
+  };
+
+  const handleNext = (index) => {
+    setCurrentIndex((prev) => ({
+      ...prev,
+      [index]: (prev[index] ?? 0) === cars[index].images.length - 1
+        ? 0
+        : prev[index] + 1,
+    }));
+  };
 
   return (
-    <div>
-      <h2>Mevcut Araçlar ({cars.length})</h2>
-      {cars.map((car) => (
-        <div key={car.id} style={{ border: "1px solid #ccc", padding: "10px", margin: "10px 0" }}>
-          <h3>{car.name}</h3>
-          <p>Fiyat (EUR): €{car.price_eur}</p>
-          <p>Mesafe: {car.distance_km} km</p>
-          <button onClick={() => onSelectCar(car)}>Bu aracı seç</button>
-        </div>
-      ))}
+    <div className="luxury-container">
+      <button className="back-btn" onClick={() => navigate(-1)}>← Geri</button>
+      <h2 className="luxury-title">Lütfen Sizin İçin Uygun Aracı Seçin</h2>
+
+      {cars.map((car, index) => {
+        const imageIndex = currentIndex[index] ?? 0;
+        return (
+          <div className="luxury-card" key={car.id}>
+            <div className="luxury-header">{car.name}</div>
+            <div className="luxury-body">
+              <div className="luxury-left">
+                <div className="luxury-slider">
+                  <button onClick={() => handlePrev(index)} className="slider-btn">‹</button>
+                  <img src={car.images[imageIndex]} alt={car.name} className="luxury-image" />
+                  <button onClick={() => handleNext(index)} className="slider-btn">›</button>
+                </div>
+              </div>
+              <div className="luxury-right">
+                <h4>Dâhil Olan Hizmetler</h4>
+                <ul>
+                  {car.services?.map((service, idx) => (
+                    <li key={idx}>✓ {service}</li>
+                  ))}
+                </ul>
+                <div className="price-section">
+                  <label>
+                    <input type="radio" name={`tripType-${car.id}`} defaultChecked />
+                    Tek Yön
+                  </label>
+                  <span className="price-box">{car.price_eur} €</span>
+
+                  <label>
+                    <input type="radio" name={`tripType-${car.id}`} />
+                    Gidiş - Dönüş
+                  </label>
+                  <span className="price-box">{car.price_eur * 2} €</span>
+                </div>
+                <div className="note">* Toplam araç fiyatıdır, kişi başı değildir.</div>
+                <button className="reserve-btn" onClick={() => onCarSelect(car)}>✓ REZERVASYON</button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
