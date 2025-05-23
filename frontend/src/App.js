@@ -20,14 +20,11 @@ function App() {
     setSelectedCar(null);
   };
 
-  const handleAdminLogout = () => {
-    setAdminToken(null);
-  };
+  const handleAdminLogout = () => setAdminToken(null);
 
   return (
     <Router>
       <Routes>
-        {/* Kullanıcı ana sayfası */}
         <Route path="/" element={
           <div className="page-center">
             {!formData ? (
@@ -54,8 +51,6 @@ function App() {
             )}
           </div>
         } />
-
-        {/* Admin paneli */}
         <Route path="/admin" element={
           <div className="container">
             <h1>Admin Panel</h1>

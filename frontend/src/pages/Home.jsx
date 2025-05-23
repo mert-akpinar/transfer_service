@@ -39,14 +39,18 @@ export default function Home({ onNext }) {
       <form onSubmit={handleSubmit} className="reservation-form">
         <label>Alış Noktası:</label>
         <select name="from" value={form.from} onChange={handleChange} required>
-          <option value="">Seçiniz</option>
-          {locations.map((loc, idx) => <option key={idx} value={loc}>{loc}</option>)}
-        </select>
+  <option value="">Seçiniz</option>
+  {locations.map((loc, idx) => (
+    <option key={idx} value={loc.value}>{loc.label}</option>
+  ))}
+</select>
 
         <label>Varış Noktası:</label>
         <select name="to" value={form.to} onChange={handleChange} required>
-          <option value="">Seçiniz</option>
-          {locations.map((loc, idx) => <option key={idx} value={loc}>{loc}</option>)}
+            <option value="">Seçiniz</option>
+            {locations.map((loc, idx) => (
+            <option key={idx} value={loc.value}>{loc.label}</option>
+          ))}
         </select>
 
         <label>Yetişkin:</label>
