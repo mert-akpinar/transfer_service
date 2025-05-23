@@ -97,9 +97,9 @@
     "name": "S Class",
     "multiplier": 1.8,
     "images": [
-      "/images/cars/sclass/ssclass_1.PNG",
-      "/images/cars/sclass/ssclass_2.PNG",
-      "/images/cars/sclass/ssclass_3.PNG"
+      "/images/cars/sclass/sclass_1.PNG",
+      "/images/cars/sclass/sclass_2.PNG",
+      "/images/cars/sclass/sclass_3.PNG"
         ]
   }
 ]

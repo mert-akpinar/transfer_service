@@ -148,7 +148,7 @@ body {
 /* Slider */
 .luxury-slider {
   position: relative;
-  height: 200px;
+  height: 320px;
   background: #fafafa;
   border-radius: 10px;
   overflow: hidden;
@@ -219,6 +219,8 @@ body {
   border-radius: 6px;
   color: #fff;
   font-weight: bold;
+  line-height: 1;
+  display: inline-block;
 }
 
 .note {
@@ -360,4 +362,40 @@ html, body {
   display: grid;
   place-items: center;
   min-height: 100vh;
+}
+.trip-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9f9f9;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  flex: 1;
+  line-height: 1;
+}
+
+.trip-option input {
+  margin-right: 6px;
+}
+
+.trip-option span {
+  font-weight: 500;
+}
+
+.trip-option .price-box {
+  margin-left: auto;
+  background: #28a745;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.services-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
 }
