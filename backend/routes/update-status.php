@@ -1,7 +1,4 @@
 <?php
-require_once '../db.php';
-require_once '../utils/response.php';
-
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
@@ -10,6 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
+
+require_once '../db.php';
+require_once '../utils/response.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -33,10 +33,8 @@ if (!isset($reservations[$data['index']])) {
     sendResponse(['error' => 'Rezervasyon bulunamadı'], 404);
 }
 
-// Güncelleme işlemi
 $reservations[$data['index']]['status'] = $data['status'];
 
-file_put_contents($file, json_encode($reservations, JSON_PRETTY_PRINT));
+file_put_contents($file, json_encode($reservations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
 sendResponse(['success' => true, 'status' => $data['status']]);
-?>

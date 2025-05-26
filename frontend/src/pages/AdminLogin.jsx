@@ -30,14 +30,28 @@ export default function AdminLogin({ onLogin }) {
   };
 
   return (
-    <div>
-      <h2>Admin Giriş</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Şifre" onChange={handleChange} required />
+    <div className="admin-login-container">
+      <form className="admin-login-form" onSubmit={handleSubmit}>
+        <h2>Admin Girişi</h2>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email adresi"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Şifre"
+          value={form.password}
+          onChange={handleChange}
+          required
+        />
         <button type="submit">Giriş Yap</button>
+        {error && <div className="error-message">{error}</div>}
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 }

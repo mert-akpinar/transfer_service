@@ -1,8 +1,8 @@
 <?php
-function sendResponse($data, $code = 200) {
-    http_response_code($code);
-    header('Content-Type: application/json');
-    echo json_encode($data);
+function sendResponse($data, $statusCode = 200) {
+    http_response_code($statusCode);
+    header("Content-Type: application/json");
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
     exit;
 }
 ?>

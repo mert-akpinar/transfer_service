@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import locations from "../data/locations";
 import "../App.css";
 
 export default function CarList({ formData, onCarSelect }) {
@@ -7,7 +8,7 @@ export default function CarList({ formData, onCarSelect }) {
   const [currentIndex, setCurrentIndex] = useState({});
   const [exchangeRates, setExchangeRates] = useState({});
   const [distance, setDistance] = useState(0); // km
-
+  
   useEffect(() => {
     fetch("http://localhost/transfer_service/backend/data/rates.json")
       .then(res => res.json())
@@ -79,57 +80,74 @@ export default function CarList({ formData, onCarSelect }) {
     });
   };
 
+  const handleSelect = (car) => {
+  const price = getDynamicPrice(car.id); // Aracın fiyatı hesaplanır
+  const selectedCarData = { ...car, price }; // Fiyat bilgisi eklenir
+  onCarSelect(selectedCarData); // ReservationForm'a gönderilir
+  navigate("/reservation");
+};
+
+  const fromLabel = locations.find(l => l.value === formData?.from)?.label || formData?.from;
+  const toLabel = locations.find(l => l.value === formData?.to)?.label || formData?.to;
+
   return (
-    <div className="luxury-container">
-      <button className="back-btn" onClick={() => navigate(-1)}>← Geri</button>
-      <h2 className="luxury-title">Lütfen Sizin İçin Uygun Aracı Seçin</h2>
+    <div className="carlist-page-wrapper">
+      <div className="carlist-header">
+        <button className="back-btn" onClick={() => navigate("/")}>← Geri</button>
+        <h2 className="luxury-title">Lütfen Sizin İçin Uygun Aracı Seçin</h2>
+        <div className="route-display">{fromLabel} → {toLabel}</div>
+      </div>
 
-      {cars.map((car, index) => {
-        const imageIndex = currentIndex[index] ?? 0;
-        const imageSrc = car.images?.[imageIndex] || "";
+      <div className="luxury-container">
+        {cars.map((car, index) => {
+          const imageIndex = currentIndex[index] ?? 0;
+          const imageSrc = car.images?.[imageIndex] || "";
 
-        return (
-          <div className="luxury-card" key={car.id}>
-            <div className="luxury-header">{car.name}</div>
-            <div className="luxury-body">
-              <div className="luxury-left">
-                <div className="luxury-slider">
-                  <button onClick={() => handlePrev(index)} className="slider-btn">‹</button>
-                  <img src={imageSrc} alt={car.name} className="luxury-image" />
-                  <button onClick={() => handleNext(index)} className="slider-btn">›</button>
-                </div>
-              </div>
-
-              <div className="luxury-right">
-                <h4>Dâhil Olan Hizmetler</h4>
-                <div className="services-inline">
-                  {car.services.map((s, idx) => <span className="service-pill" key={idx}>✓ {s}</span>)}
+          return (
+            <div className="luxury-card" key={car.id}>
+              <div className="luxury-header">{car.name}</div>
+              <div className="luxury-body">
+                <div className="luxury-left">
+                  <div className="luxury-slider">
+                    <button onClick={() => handlePrev(index)} className="slider-btn">‹</button>
+                    <img src={imageSrc} alt={car.name} className="luxury-image" />
+                    <button onClick={() => handleNext(index)} className="slider-btn">›</button>
+                  </div>
                 </div>
 
-                <div className="price-section">
-                  <label className="trip-option">
-                    <input type="radio" name={`tripType-${car.id}`} defaultChecked />
-                    <span>Tek Yön</span>
-                    <span className="price-box">
-                      {getDynamicPrice(car.id)} {currency}
-                    </span>
-                  </label>
-                  <label className="trip-option">
-                    <input type="radio" name={`tripType-${car.id}`} />
-                    <span>Gidiş Dönüş</span>
-                    <span className="price-box">
-                      {getDynamicPrice(car.id, 2)} {currency}
-                    </span>
-                  </label>
-                </div>
+                <div className="luxury-right">
+                  <h4>Dâhil Olan Hizmetler</h4>
+                  <div className="services-inline">
+                    {car.services.map((s, idx) => (
+                      <span className="service-pill" key={idx}>✓ {s}</span>
+                    ))}
+                  </div>
 
-                <div className="note">* Toplam araç fiyatıdır, kişi başı değildir.</div>
-                <button className="reserve-btn" onClick={() => onCarSelect(car)}>✓ REZERVASYON</button>
+                  <div className="price-section">
+                    <label className="trip-option">
+                      <input type="radio" name={`tripType-${car.id}`} defaultChecked />
+                      <span>Tek Yön</span>
+                      <span className="price-box">
+                        {getDynamicPrice(car.id)} {currency}
+                      </span>
+                    </label>
+                    <label className="trip-option">
+                      <input type="radio" name={`tripType-${car.id}`} />
+                      <span>Gidiş Dönüş</span>
+                      <span className="price-box">
+                        {getDynamicPrice(car.id, 2)} {currency}
+                      </span>
+                    </label>
+                  </div>
+
+                  <div className="note">* Toplam araç fiyatıdır, kişi başı değildir.</div>
+                  <button className="reserve-btn" onClick={() => handleSelect(car)}>✓ REZERVASYON</button>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
