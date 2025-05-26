@@ -55,13 +55,13 @@ export default function CarList({ formData, onCarSelect }) {
   };
 
   const cars = [
-    { id: 1, name: "Standart Vip", images: Array.from({ length: 5 }, (_, i) => `/images/cars/standartvip/standartvip_${i + 1}.PNG`), services: ["WiFi", "İçecek", "Derin Temizlik"] },
-    { id: 2, name: "Premium Vip", images: Array.from({ length: 11 }, (_, i) => `/images/cars/premiumvip/premiumvip_${i + 1}.PNG`), services: ["WiFi", "İçecek", "Yatabilir Koltuklar", "TV"] },
-    { id: 3, name: "Maybach Class", images: Array.from({ length: 18 }, (_, i) => `/images/cars/maybachclass/maybachclass_${i + 1}.PNG`), services: ["VIP Hizmet", "Sürücü", "Özel Tasarım", "Mini Bar"] },
-    { id: 4, name: "Sprinter 10 kişilik", images: Array.from({ length: 6 }, (_, i) => `/images/cars/sprinter10kisilik/sprinter10kisilik_${i + 1}.PNG`), services: ["10 Kişilik", "Konforlu Oturma", "Klima"] },
-    { id: 5, name: "Sprinter 14 kişilik", images: Array.from({ length: 5 }, (_, i) => `/images/cars/sprinter14kisilik/sprinter14kisilik_${i + 1}.PNG`), services: ["14 Kişilik", "USB Şarj", "Geniş Alan"] },
-    { id: 6, name: "E Class", images: Array.from({ length: 5 }, (_, i) => `/images/cars/eclass/eclass_${i + 1}.PNG`), services: ["Konfor", "Sürücü Dahil", "Otomatik Kapı"] },
-    { id: 7, name: "S Class", images: Array.from({ length: 3 }, (_, i) => `/images/cars/sclass/sclass_${i + 1}.PNG`), services: ["Prestij", "VIP", "Ses Yalıtımı"] },
+    { id: 1, name: "Standart Vip", images: Array.from({ length: 4 }, (_, i) => `/images/cars/standartvip/standartvip_${i + 1}.PNG`), services: ["WiFi", "İçecek", "Derin Temizlik"] },
+    { id: 2, name: "Premium Vip", images: Array.from({ length: 4 }, (_, i) => `/images/cars/premiumvip/premiumvip_${i + 1}.PNG`), services: ["WiFi", "İçecek", "Yatabilir Koltuklar", "TV"] },
+    { id: 3, name: "Maybach Class", images: Array.from({ length: 4 }, (_, i) => `/images/cars/maybachclass/maybachclass_${i + 1}.PNG`), services: ["VIP Hizmet", "Sürücü", "Özel Tasarım", "Mini Bar"] },
+    { id: 4, name: "Sprinter 10 kişilik", images: Array.from({ length: 4 }, (_, i) => `/images/cars/sprinter10kisilik/sprinter10kisilik_${i + 1}.PNG`), services: ["10 Kişilik", "Konforlu Oturma", "Klima"] },
+    { id: 5, name: "Sprinter 14 kişilik", images: Array.from({ length: 4 }, (_, i) => `/images/cars/sprinter14kisilik/sprinter14kisilik_${i + 1}.PNG`), services: ["14 Kişilik", "USB Şarj", "Geniş Alan"] },
+    { id: 6, name: "E Class", images: Array.from({ length: 4 }, (_, i) => `/images/cars/eclass/eclass_${i + 1}.PNG`), services: ["Konfor", "Sürücü Dahil", "Otomatik Kapı"] },
+    { id: 7, name: "S Class", images: Array.from({ length: 4 }, (_, i) => `/images/cars/sclass/sclass_${i + 1}.PNG`), services: ["Prestij", "VIP", "Ses Yalıtımı"] },
   ];
 
   const handleNext = (index) => {

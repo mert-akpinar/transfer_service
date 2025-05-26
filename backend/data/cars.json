@@ -7,8 +7,7 @@
       "/images/cars/standartvip/standartvip_1.PNG",
       "/images/cars/standartvip/standartvip_2.PNG",
       "/images/cars/standartvip/standartvip_3.PNG",
-      "/images/cars/standartvip/standartvip_4.PNG",
-      "/images/cars/standartvip/standartvip_5.PNG"  
+      "/images/cars/standartvip/standartvip_4.PNG"
     ]
   },
   {
@@ -19,14 +18,7 @@
       "/images/cars/premiumvip/premiumvip_1.PNG",
       "/images/cars/premiumvip/premiumvip_2.PNG",
       "/images/cars/premiumvip/premiumvip_3.PNG",
-      "/images/cars/premiumvip/premiumvip_4.PNG",
-      "/images/cars/premiumvip/premiumvip_5.PNG",
-      "/images/cars/premiumvip/premiumvip_6.PNG",
-      "/images/cars/premiumvip/premiumvip_7.PNG",
-      "/images/cars/premiumvip/premiumvip_8.PNG",
-      "/images/cars/premiumvip/premiumvip_9.PNG",
-      "/images/cars/premiumvip/premiumvip_10.PNG",
-      "/images/cars/premiumvip/premiumvip_11.PNG"
+      "/images/cars/premiumvip/premiumvip_4.PNG"
     ]
   },
   {
@@ -37,22 +29,7 @@
       "/images/cars/maybachclass/maybachclass_1.PNG",
       "/images/cars/maybachclass/maybachclass_2.PNG",
       "/images/cars/maybachclass/maybachclass_3.PNG",
-      "/images/cars/maybachclass/maybachclass_4.PNG",
-      "/images/cars/maybachclass/maybachclass_5.PNG",
-      "/images/cars/maybachclass/maybachclass_6.PNG",
-      "/images/cars/maybachclass/maybachclass_7.PNG",
-      "/images/cars/maybachclass/maybachclass_8.PNG",
-      "/images/cars/maybachclass/maybachclass_9.PNG",
-      "/images/cars/maybachclass/maybachclass_10.PNG",
-      "/images/cars/maybachclass/maybachclass_11.PNG",
-      "/images/cars/maybachclass/maybachclass_12.PNG", 
-      "/images/cars/maybachclass/maybachclass_13.PNG",      
-      "/images/cars/maybachclass/maybachclass_14.PNG", 
-      "/images/cars/maybachclass/maybachclass_15.PNG", 
-      "/images/cars/maybachclass/maybachclass_16.PNG", 
-      "/images/cars/maybachclass/maybachclass_17.PNG", 
-      "/images/cars/maybachclass/maybachclass_18.PNG"
-
+      "/images/cars/maybachclass/maybachclass_4.PNG"
     ]
   },
   {
@@ -63,9 +40,7 @@
       "/images/cars/sprinter10kisilik/sprinter10kisilik_1.PNG",
       "/images/cars/sprinter10kisilik/sprinter10kisilik_2.PNG",
       "/images/cars/sprinter10kisilik/sprinter10kisilik_3.PNG",
-      "/images/cars/sprinter10kisilik/sprinter10kisilik_4.PNG",
-      "/images/cars/sprinter10kisilik/sprinter10kisilik_5.PNG",
-      "/images/cars/sprinter10kisilik/sprinter10kisilik_6.PNG"
+      "/images/cars/sprinter10kisilik/sprinter10kisilik_4.PNG"
     ]
   },
   {
@@ -76,8 +51,7 @@
       "/images/cars/sprinter14kisilik/sprinter14kisilik_1.PNG",
       "/images/cars/sprinter14kisilik/sprinter14kisilik_2.PNG",
       "/images/cars/sprinter14kisilik/sprinter14kisilik_3.PNG",
-      "/images/cars/sprinter14kisilik/sprinter14kisilik_4.PNG",
-      "/images/cars/sprinter14kisilik/sprinter14kisilik_5.PNG"
+      "/images/cars/sprinter14kisilik/sprinter14kisilik_4.PNG"
     ]
   },
   {
@@ -88,8 +62,7 @@
       "/images/cars/eclass/eclass_1.PNG",
       "/images/cars/eclass/eclass_2.PNG",
       "/images/cars/eclass/eclass_3.PNG",
-      "/images/cars/eclass/eclass_4.PNG",
-      "/images/cars/eclass/eclass_5.PNG"
+      "/images/cars/eclass/eclass_4.PNG"
     ]
   },
   {
@@ -99,7 +72,8 @@
     "images": [
       "/images/cars/sclass/sclass_1.PNG",
       "/images/cars/sclass/sclass_2.PNG",
-      "/images/cars/sclass/sclass_3.PNG"
+      "/images/cars/sclass/sclass_3.PNG",
+      "/images/cars/sclass/sclass_4.PNG"
         ]
   }
 ]

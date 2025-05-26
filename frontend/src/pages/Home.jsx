@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import locations from "../data/locations";
+import locations from "../data/locations"; // Eğer locations backend'ten gelirse bunu kaldır
 import "../App.css";
 
 const currencies = ["EUR", "USD", "GBP", "RUB", "TRY"];
@@ -11,7 +11,31 @@ export default function Home({ onNext }) {
   });
 
   const [error, setError] = useState("");
+  const [googleApiKey, setGoogleApiKey] = useState(null); // Google API Key için state
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Backend'ten Google API Key'i çek
+    fetch("http://localhost/transfer_service/backend/routes/apikey.php")
+      .then((response) => response.json())
+      .then((data) => {
+        setGoogleApiKey(data.googleApiKey);
+
+        // Google Maps API script'ini ekle
+        const script = document.createElement("script");
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${data.googleApiKey}&libraries=places`;
+        script.async = true;
+        document.body.appendChild(script);
+
+        return () => {
+          // Bileşen unmount olduğunda script'i temizle
+          document.body.removeChild(script);
+        };
+      })
+      .catch((error) => {
+        console.error("API Key alınamadı:", error);
+      });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
