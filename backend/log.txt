@@ -1,11 +1,11 @@
 Array
 (
-    [name] => mert akpinar
+    [name] => Lenovo
     [email] => mert@novitasgroups.com
     [phone] => 05510258181
-    [note] => lorem ıpsum
-    [date] => 2025-05-23
-    [time] => 12:35
+    [note] => 
+    [date] => 0003-02-04
+    [time] => 23:01
     [pickup] => Süit Apart
     [dropoff] => Antalya AWM
     [extras] => Array
@@ -13,33 +13,32 @@ Array
             [0] => Baby Seat
         )
 
-    [from] => Kaleiçi, Muratpaşa, Antalya
-    [to] => Evrenseki, Manavgat, Antalya
-    [adults] => 3
-    [children] => 2
-    [currency] => EUR
+    [from] => Antalya Havalimanı
+    [to] => Demre, Antalya
+    [adults] => 8
+    [children] => 4
+    [currency] => GBP
     [selected_car] => Array
         (
-            [id] => 2
-            [name] => Premium Vip
+            [id] => 4
+            [name] => Sprinter 10 kişilik
             [images] => Array
                 (
-                    [0] => /images/cars/premiumvip/premiumvip_1.PNG
-                    [1] => /images/cars/premiumvip/premiumvip_2.PNG
-                    [2] => /images/cars/premiumvip/premiumvip_3.PNG
-                    [3] => /images/cars/premiumvip/premiumvip_4.PNG
+                    [0] => /images/cars/sprinter10kisilik/sprinter10kisilik_1.PNG
+                    [1] => /images/cars/sprinter10kisilik/sprinter10kisilik_2.PNG
+                    [2] => /images/cars/sprinter10kisilik/sprinter10kisilik_3.PNG
+                    [3] => /images/cars/sprinter10kisilik/sprinter10kisilik_4.PNG
                 )
 
             [services] => Array
                 (
-                    [0] => WiFi
-                    [1] => İçecek
-                    [2] => Yatabilir Koltuklar
-                    [3] => TV
+                    [0] => 10 Kişilik
+                    [1] => Konforlu Oturma
+                    [2] => Klima
                 )
 
-            [price] => 51
+            [price] => 119
         )
 
-    [created_at] => 2025-05-26T10:45:49.646Z
+    [created_at] => 2025-05-26T13:35:31.122Z
 )

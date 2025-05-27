@@ -18,7 +18,7 @@
         "currency": "EUR",
         "selected_car": "S Class",
         "created_at": "2025-05-23T13:00:00.000Z",
-        "status": "Rezervasyon İptal Edildi"
+        "status": "Rezervasyon Onaylandı"
     },
     {
         "name": "mert akpinar",
@@ -40,7 +40,7 @@
         "currency": "USD",
         "selected_car": "Sprinter 14 kişilik",
         "created_at": "2025-05-23T16:52:44.828Z",
-        "status": "Rezervasyon İptal Edildi"
+        "status": "Rezervasyon Gerçekleşti"
     },
     {
         "name": "Ali",
@@ -56,7 +56,8 @@
         "adults": 2,
         "children": 1,
         "currency": "EUR",
-        "created_at": "2025-05-23T15:30:00.000Z"
+        "created_at": "2025-05-23T15:30:00.000Z",
+        "status": "Rezervasyon Onaylandı"
     },
     {
         "name": "mert akpinar",
@@ -79,7 +80,8 @@
         "selected_car": "Sprinter 14 kişilik",
         "selected_car_price": 1802,
         "selected_car_id": 5,
-        "created_at": "2025-05-23T16:59:16.952Z"
+        "created_at": "2025-05-23T16:59:16.952Z",
+        "status": "Rezervasyon Onaylandı"
     },
     {
         "name": "mert akpinar",
@@ -102,7 +104,8 @@
         "selected_car": "S Class",
         "selected_car_price": 27782,
         "selected_car_id": 7,
-        "created_at": "2025-05-23T17:03:10.647Z"
+        "created_at": "2025-05-23T17:03:10.647Z",
+        "status": "Beklemede"
     },
     {
         "name": "mert akpinar",
@@ -139,7 +142,8 @@
             ],
             "price": 6
         },
-        "created_at": "2025-05-23T17:20:39.060Z"
+        "created_at": "2025-05-23T17:20:39.060Z",
+        "status": "Rezervasyon İptal Edildi"
     },
     {
         "name": "mert akpinar",
@@ -184,7 +188,7 @@
             "price": 43
         },
         "created_at": "2025-05-23T17:21:19.792Z",
-        "status": "Rezervasyon Gerçekleşti"
+        "status": "Rezervasyon İptal Edildi"
     },
     {
         "name": "mert akpinar",
@@ -232,7 +236,8 @@
             ],
             "price": 68
         },
-        "created_at": "2025-05-23T17:26:27.006Z"
+        "created_at": "2025-05-23T17:26:27.006Z",
+        "status": "Rezervasyon Gerçekleşti"
     },
     {
         "name": "mert akpinar",
@@ -269,5 +274,74 @@
             "price": 51
         },
         "created_at": "2025-05-26T10:45:49.646Z"
+    },
+    {
+        "name": "mert akpinar",
+        "email": "mert@novitasgroups.com",
+        "phone": "05510258181",
+        "note": "",
+        "date": "0003-02-04",
+        "time": "03:34",
+        "pickup": "Süit Apart",
+        "dropoff": "Antalya AWM",
+        "extras": [],
+        "from": "Antalya Otogarı",
+        "to": "Gündoğdu, Manavgat, Antalya",
+        "adults": 1,
+        "children": 0,
+        "currency": "EUR",
+        "selected_car": {
+            "id": 1,
+            "name": "Standart Vip",
+            "images": [
+                "\/images\/cars\/standartvip\/standartvip_1.PNG",
+                "\/images\/cars\/standartvip\/standartvip_2.PNG",
+                "\/images\/cars\/standartvip\/standartvip_3.PNG",
+                "\/images\/cars\/standartvip\/standartvip_4.PNG"
+            ],
+            "services": [
+                "WiFi",
+                "İçecek",
+                "Derin Temizlik"
+            ],
+            "price": 39
+        },
+        "created_at": "2025-05-26T13:34:21.759Z",
+        "status": "Rezervasyon Gerçekleşti"
+    },
+    {
+        "name": "Lenovo",
+        "email": "mert@novitasgroups.com",
+        "phone": "05510258181",
+        "note": "",
+        "date": "0003-02-04",
+        "time": "23:01",
+        "pickup": "Süit Apart",
+        "dropoff": "Antalya AWM",
+        "extras": [
+            "Baby Seat"
+        ],
+        "from": "Antalya Havalimanı",
+        "to": "Demre, Antalya",
+        "adults": "8",
+        "children": "4",
+        "currency": "GBP",
+        "selected_car": {
+            "id": 4,
+            "name": "Sprinter 10 kişilik",
+            "images": [
+                "\/images\/cars\/sprinter10kisilik\/sprinter10kisilik_1.PNG",
+                "\/images\/cars\/sprinter10kisilik\/sprinter10kisilik_2.PNG",
+                "\/images\/cars\/sprinter10kisilik\/sprinter10kisilik_3.PNG",
+                "\/images\/cars\/sprinter10kisilik\/sprinter10kisilik_4.PNG"
+            ],
+            "services": [
+                "10 Kişilik",
+                "Konforlu Oturma",
+                "Klima"
+            ],
+            "price": 119
+        },
+        "created_at": "2025-05-26T13:35:31.122Z"
     }
 ]
