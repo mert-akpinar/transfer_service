@@ -12,7 +12,7 @@ export default function AdminLogin({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost/transfer_service/backend/routes/admin.php", {
+      const res = await fetch("https://reservation.airportantalyavipshuttle.com/backend/routes/admin.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)

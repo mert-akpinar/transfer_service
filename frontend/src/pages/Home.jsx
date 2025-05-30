@@ -16,7 +16,7 @@ export default function Home({ onNext }) {
 
   useEffect(() => {
     // Backend'ten Google API Key'i çek
-    fetch("http://localhost/transfer_service/backend/routes/apikey.php")
+    fetch("https://reservation.airportantalyavipshuttle.com/backend/routes/apikey.php")
       .then((response) => response.json())
       .then((data) => {
         setGoogleApiKey(data.googleApiKey);

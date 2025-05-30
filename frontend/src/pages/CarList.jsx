@@ -10,7 +10,7 @@ export default function CarList({ formData, onCarSelect }) {
   const [distance, setDistance] = useState(0); // km
   
   useEffect(() => {
-    fetch("http://localhost/transfer_service/backend/data/rates.json")
+    fetch("https://reservation.airportantalyavipshuttle.com/backend/data/rates.json")
       .then(res => res.json())
       .then(data => setExchangeRates(data))
       .catch(() => setExchangeRates({ EUR: 1 }));
@@ -55,13 +55,13 @@ export default function CarList({ formData, onCarSelect }) {
   };
 
   const cars = [
-    { id: 1, name: "Standart Vip", images: Array.from({ length: 4 }, (_, i) => `/images/cars/standartvip/standartvip_${i + 1}.PNG`), services: ["WiFi", "İçecek", "Derin Temizlik"] },
-    { id: 2, name: "Premium Vip", images: Array.from({ length: 4 }, (_, i) => `/images/cars/premiumvip/premiumvip_${i + 1}.PNG`), services: ["WiFi", "İçecek", "Yatabilir Koltuklar", "TV"] },
-    { id: 3, name: "Maybach Class", images: Array.from({ length: 4 }, (_, i) => `/images/cars/maybachclass/maybachclass_${i + 1}.PNG`), services: ["VIP Hizmet", "Sürücü", "Özel Tasarım", "Mini Bar"] },
-    { id: 4, name: "Sprinter 10 kişilik", images: Array.from({ length: 4 }, (_, i) => `/images/cars/sprinter10kisilik/sprinter10kisilik_${i + 1}.PNG`), services: ["10 Kişilik", "Konforlu Oturma", "Klima"] },
-    { id: 5, name: "Sprinter 14 kişilik", images: Array.from({ length: 4 }, (_, i) => `/images/cars/sprinter14kisilik/sprinter14kisilik_${i + 1}.PNG`), services: ["14 Kişilik", "USB Şarj", "Geniş Alan"] },
-    { id: 6, name: "E Class", images: Array.from({ length: 4 }, (_, i) => `/images/cars/eclass/eclass_${i + 1}.PNG`), services: ["Konfor", "Sürücü Dahil", "Otomatik Kapı"] },
-    { id: 7, name: "S Class", images: Array.from({ length: 4 }, (_, i) => `/images/cars/sclass/sclass_${i + 1}.PNG`), services: ["Prestij", "VIP", "Ses Yalıtımı"] },
+    { id: 1, name: "Standart Vip", images: Array.from({ length: 4 }, (_, i) => `https://reservation.airportantalyavipshuttle.com/images/cars/standartvip/standartvip_${i + 1}.png`), services: ["WiFi", "İçecek", "Derin Temizlik"] },
+    { id: 2, name: "Premium Vip", images: Array.from({ length: 4 }, (_, i) => `https://reservation.airportantalyavipshuttle.com/images/cars/premiumvip/premiumvip_${i + 1}.png`), services: ["WiFi", "İçecek", "Yatabilir Koltuklar", "TV"] },
+    { id: 3, name: "Maybach Class", images: Array.from({ length: 4 }, (_, i) => `https://reservation.airportantalyavipshuttle.com/images/cars/maybachclass/maybachclass_${i + 1}.png`), services: ["VIP Hizmet", "Sürücü", "Özel Tasarım", "Mini Bar"] },
+    { id: 4, name: "Sprinter 10 kişilik", images: Array.from({ length: 4 }, (_, i) => `https://reservation.airportantalyavipshuttle.com/images/cars/sprinter10kisilik/sprinter10kisilik_${i + 1}.png`), services: ["10 Kişilik", "Konforlu Oturma", "Klima"] },
+    { id: 5, name: "Sprinter 14 kişilik", images: Array.from({ length: 4 }, (_, i) => `https://reservation.airportantalyavipshuttle.com/images/cars/sprinter14kisilik/sprinter14kisilik_${i + 1}.png`), services: ["14 Kişilik", "USB Şarj", "Geniş Alan"] },
+    { id: 6, name: "E Class", images: Array.from({ length: 4 }, (_, i) => `https://reservation.airportantalyavipshuttle.com/images/cars/eclass/eclass_${i + 1}.png`), services: ["Konfor", "Sürücü Dahil", "Otomatik Kapı"] },
+    { id: 7, name: "S Class", images: Array.from({ length: 4 }, (_, i) => `https://reservation.airportantalyavipshuttle.com/images/cars/sclass/sclass_${i + 1}.png`), services: ["Prestij", "VIP", "Ses Yalıtımı"] },
   ];
 
   const handleNext = (index) => {

@@ -37,7 +37,7 @@ export default function ReservationForm({ formData, selectedCar }) {
   };
 
   try {
-    const response = await fetch("http://localhost/transfer_service/backend/routes/reserve.php", {
+    const response = await fetch("https://reservation.airportantalyavipshuttle.com/backend/routes/reserve.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -82,41 +82,41 @@ export default function ReservationForm({ formData, selectedCar }) {
         </div>
 
         <div className="form-column">
-          <h3>Personal Information</h3>
-          <label>Full Name:</label>
+          <h3>Kişisel Bilgiler</h3>
+          <label>İsim-Soyisim:</label>
           <input type="text" name="name" value={reservationData.name} onChange={handleChange} required />
           <label>E-Mail:</label>
           <input type="email" name="email" value={reservationData.email} onChange={handleChange} required />
-          <label>Phone:</label>
+          <label>Telefon:</label>
           <input type="tel" name="phone" value={reservationData.phone} onChange={handleChange} required />
-          <label>Note:</label>
+          <label>Eklemek İstediğiniz Not:</label>
           <textarea name="note" rows={4} value={reservationData.note} onChange={handleChange} />
         </div>
 
         <div className="form-column">
-          <h3>Arrival Transfer Information</h3>
-          <label>Meeting Date:</label>
+          <h3>Transfer Bilgileriniz</h3>
+          <label>Buluşma Tarihi:</label>
           <input type="date" name="date" value={reservationData.date} onChange={handleChange} required />
-          <label>Meeting Time:</label>
+          <label>Buluşma Zamanı:</label>
           <input type="time" name="time" value={reservationData.time} onChange={handleChange} required />
-          <label>Pickup Address:</label>
+          <label>Alış Adresi:</label>
           <input type="text" name="pickup" value={reservationData.pickup} onChange={handleChange} required />
-          <label>Drop-off Address:</label>
+          <label>Varış Adresi:</label>
           <input type="text" name="dropoff" value={reservationData.dropoff} onChange={handleChange} required />
 
           <div className="extras-section">
-            <p>Extras:</p>
+            <p>Extra:</p>
             <button type="button" onClick={() => toggleExtra("Baby Seat")}
               className={`extra-btn ${reservationData.extras.includes("Baby Seat") ? "selected" : ""}`}>
-              {reservationData.extras.includes("Baby Seat") ? "✓ Baby Seat" : "I want a baby seat +"}
+              {reservationData.extras.includes("Baby Seat") ? "✓ Bebek Koltuğu" : "Bebek Koltuğu istiyorum. +"}
             </button>
             <button type="button" onClick={() => toggleExtra("Cold Drinks")}
               className={`extra-btn ${reservationData.extras.includes("Cold Drinks") ? "selected" : ""}`}>
-              {reservationData.extras.includes("Cold Drinks") ? "✓ Cold Drinks" : "Cold Drinks +"}
+              {reservationData.extras.includes("Cold Drinks") ? "✓ Soğuk İçecek" : "Soğuk İçecek +"}
             </button>
           </div>
 
-          <button type="submit" className="submit-btn">Confirm Reservation</button>
+          <button type="submit" className="submit-btn">Rezervasyon Oluştur</button>
         </div>
       </form>
     </div>

@@ -23,7 +23,7 @@ export default function AdminPanel({ token, onLogout }) {
   };
 
   useEffect(() => {
-    fetch("http://localhost/transfer_service/backend/routes/get-rates.php")
+    fetch("https://reservation.airportantalyavipshuttle.com/backend/routes/get-rates.php")
       .then((res) => res.json())
       .then((data) => setRates(data))
       .catch(() => showNotification("Kur bilgileri alınamadı", "error"));
@@ -35,7 +35,7 @@ export default function AdminPanel({ token, onLogout }) {
 
   const saveRates = () => {
     setSavingRates(true);
-    fetch("http://localhost/transfer_service/backend/routes/save-rates.php", {
+    fetch("https://reservation.airportantalyavipshuttle.com/backend/routes/save-rates.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(rates)
@@ -53,7 +53,7 @@ export default function AdminPanel({ token, onLogout }) {
   };
 
   useEffect(() => {
-    fetch(`http://localhost/transfer_service/backend/routes/admin.php?token=${token}`)
+    fetch(`https://reservation.airportantalyavipshuttle.com/backend/routes/admin.php?token=${token}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) setError(data.error);
@@ -145,7 +145,7 @@ export default function AdminPanel({ token, onLogout }) {
   };
 
   const updateStatus = (index, status) => {
-    fetch("http://localhost/transfer_service/backend/routes/update-status.php", {
+    fetch("https://reservation.airportantalyavipshuttle.com/backend/routes/update-status.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ index, status }),
@@ -180,8 +180,26 @@ export default function AdminPanel({ token, onLogout }) {
           </div>
         )}
         <header className="topbar">
-          <h1>Rezervasyonlar ({filtered.length})</h1>
-        </header>
+  <h1>Rezervasyonlar ({filtered.length})</h1>
+  <button
+    onClick={() => {
+      if (onLogout) onLogout();  // Varsa onLogout fonksiyonunu çağır
+      window.location.href = "/admin";  // Admin login sayfasına yönlendir
+    }}
+    style={{
+      backgroundColor: "#FF4136",
+      color: "white",
+      padding: "8px 12px",
+      border: "none",
+      borderRadius: "4px",
+      cursor: "pointer",
+      marginLeft: "auto"
+    }}
+  >
+    Çıkış Yap
+  </button>
+</header>
+
 
         <section className="stats">
           {["USD", "GBP", "RUB", "TRY"].map((currency) => (

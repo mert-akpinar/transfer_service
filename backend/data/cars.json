@@ -4,10 +4,10 @@
     "name": "Standart Vip",
     "multiplier": 1.3,
     "images": [
-      "/images/cars/standartvip/standartvip_1.PNG",
-      "/images/cars/standartvip/standartvip_2.PNG",
-      "/images/cars/standartvip/standartvip_3.PNG",
-      "/images/cars/standartvip/standartvip_4.PNG"
+      "https://reservation.airportantalyavipshuttle.com/images/cars/standartvip/standartvip_1.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/standartvip/standartvip_2.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/standartvip/standartvip_3.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/standartvip/standartvip_4.PNG"
     ]
   },
   {
@@ -15,10 +15,10 @@
     "name": "Premium Vip",
     "multiplier": 1.5,
     "images": [
-      "/images/cars/premiumvip/premiumvip_1.PNG",
-      "/images/cars/premiumvip/premiumvip_2.PNG",
-      "/images/cars/premiumvip/premiumvip_3.PNG",
-      "/images/cars/premiumvip/premiumvip_4.PNG"
+      "https://reservation.airportantalyavipshuttle.com/images/cars/premiumvip/premiumvip_1.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/premiumvip/premiumvip_2.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/premiumvip/premiumvip_3.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/premiumvip/premiumvip_4.PNG"
     ]
   },
   {
@@ -26,10 +26,10 @@
     "name": "Maybach Class",
     "multiplier": 1.7,
     "images": [
-      "/images/cars/maybachclass/maybachclass_1.PNG",
-      "/images/cars/maybachclass/maybachclass_2.PNG",
-      "/images/cars/maybachclass/maybachclass_3.PNG",
-      "/images/cars/maybachclass/maybachclass_4.PNG"
+      "https://reservation.airportantalyavipshuttle.com/images/cars/maybachclass/maybachclass_1.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/maybachclass/maybachclass_2.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/maybachclass/maybachclass_3.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/maybachclass/maybachclass_4.PNG"
     ]
   },
   {
@@ -37,10 +37,10 @@
     "name": "Sprinter 10 kişilik",
     "multiplier": 2.0,
     "images": [
-      "/images/cars/sprinter10kisilik/sprinter10kisilik_1.PNG",
-      "/images/cars/sprinter10kisilik/sprinter10kisilik_2.PNG",
-      "/images/cars/sprinter10kisilik/sprinter10kisilik_3.PNG",
-      "/images/cars/sprinter10kisilik/sprinter10kisilik_4.PNG"
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sprinter10kisilik/sprinter10kisilik_1.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sprinter10kisilik/sprinter10kisilik_2.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sprinter10kisilik/sprinter10kisilik_3.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sprinter10kisilik/sprinter10kisilik_4.PNG"
     ]
   },
   {
@@ -48,10 +48,10 @@
     "name": "Sprinter 14 kişilik",
     "multiplier": 1.1,
     "images": [
-      "/images/cars/sprinter14kisilik/sprinter14kisilik_1.PNG",
-      "/images/cars/sprinter14kisilik/sprinter14kisilik_2.PNG",
-      "/images/cars/sprinter14kisilik/sprinter14kisilik_3.PNG",
-      "/images/cars/sprinter14kisilik/sprinter14kisilik_4.PNG"
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sprinter14kisilik/sprinter14kisilik_1.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sprinter14kisilik/sprinter14kisilik_2.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sprinter14kisilik/sprinter14kisilik_3.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sprinter14kisilik/sprinter14kisilik_4.PNG"
     ]
   },
   {
@@ -59,10 +59,10 @@
     "name": "E class",
     "multiplier": 2.5,
     "images": [
-      "/images/cars/eclass/eclass_1.PNG",
-      "/images/cars/eclass/eclass_2.PNG",
-      "/images/cars/eclass/eclass_3.PNG",
-      "/images/cars/eclass/eclass_4.PNG"
+      "https://reservation.airportantalyavipshuttle.com/images/cars/eclass/eclass_1.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/eclass/eclass_2.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/eclass/eclass_3.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/eclass/eclass_4.PNG"
     ]
   },
   {
@@ -70,10 +70,10 @@
     "name": "S Class",
     "multiplier": 1.8,
     "images": [
-      "/images/cars/sclass/sclass_1.PNG",
-      "/images/cars/sclass/sclass_2.PNG",
-      "/images/cars/sclass/sclass_3.PNG",
-      "/images/cars/sclass/sclass_4.PNG"
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sclass/sclass_1.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sclass/sclass_2.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sclass/sclass_3.PNG",
+      "https://reservation.airportantalyavipshuttle.com/images/cars/sclass/sclass_4.PNG"
         ]
   }
 ]
