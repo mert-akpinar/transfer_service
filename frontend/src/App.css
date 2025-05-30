@@ -766,3 +766,182 @@ body {
 .main-content {
   overflow-x: hidden;
 }
+.search-export-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.search-input,
+.action-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #f57c00;
+  border-radius: 4px;
+  min-width: 120px;
+  height: 38px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+/* Arama Input */
+.search-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Action Butonları (Excel, PDF) */
+.action-button {
+  background: white;
+  color: #f57c00;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #f57c00;
+  color: white;
+}
+
+/* Kaydet Butonu */
+.save-button {
+  background: white;
+  border: 1px solid #f57c00;
+  color: #f57c00;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #f57c00;
+  color: white;
+}
+
+/* Tablo */
+.export-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #f57c00;  /* Turuncu border */
+  background-color: white;     /* Beyaz zemin */
+  color: #f57c00;              /* Turuncu yazı */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  min-width: 120px;            /* Sütun genişliğiyle uyumlu */
+  text-align: center;
+  height: 38px;                /* Sabit yükseklik */
+}
+
+.export-button:hover {
+  background-color: #f57c00;
+  color: white;
+}
+.notification {
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.notification.success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 6px solid #28a745;
+}
+
+.notification.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 6px solid #dc3545;
+}
+
+.notification.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-left: 6px solid #ffc107;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* 3 Nokta Menüsü */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  font-size: 20px; /* Daha büyük bir ikon için */
+  font-weight: bold; /* Daha koyu bir görünüm */
+  cursor: pointer;
+  padding: 4px;
+  color: #555; /* Daha koyu bir gri */
+  transition: color 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+  color: #000; /* Üzerine gelince siyah */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 100%;   /* Tam sağdan başlat */
+  transform: translateY(-50%);  /* Dikeyde ortala */
+  background-color: #f2f2f2;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+  min-width: 160px;
+  padding: 4px 0;
+  margin-left: 2px;  /* Menü ve buton arasındaki mesafeyi daralt */
+}
+
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  color: #000;
+  cursor: pointer;
+}
+
+
+.dropdown-menu button:hover {
+  background-color: #e0e0e0;
+}
+
+tr.status-rezervasyon-gercekleşti,
+tr.status-rezervasyon-gerceklesti {  /* İki varyasyon için */
+  background-color: #d4edda !important;
+}
+
+tr.status-rezervasyon-iptal-edildi {
+  background-color: #f8d7da !important;
+}
+
+tr.status-rezervasyon-beklemede {
+  background-color: #e2e3e5 !important;
+}

@@ -1,44 +1,44 @@
 Array
 (
-    [name] => Lenovo
-    [email] => mert@novitasgroups.com
+    [name] => Yusuf Mert AKPINAR
+    [email] => merttakpinar@gmail.com
     [phone] => 05510258181
-    [note] => 
-    [date] => 0003-02-04
-    [time] => 23:01
-    [pickup] => Süit Apart
-    [dropoff] => Antalya AWM
+    [note] => Kutlama yapacağız.
+    [date] => 2025-05-29
+    [time] => 14:50
+    [pickup] => Antalya Havalimanı
+    [dropoff] => Ramada Otel
     [extras] => Array
         (
             [0] => Baby Seat
         )
 
     [from] => Antalya Havalimanı
-    [to] => Demre, Antalya
-    [adults] => 8
-    [children] => 4
-    [currency] => GBP
+    [to] => Antalya Şehir Merkezi
+    [adults] => 3
+    [children] => 2
+    [currency] => USD
     [selected_car] => Array
         (
-            [id] => 4
-            [name] => Sprinter 10 kişilik
+            [id] => 1
+            [name] => Standart Vip
             [images] => Array
                 (
-                    [0] => /images/cars/sprinter10kisilik/sprinter10kisilik_1.PNG
-                    [1] => /images/cars/sprinter10kisilik/sprinter10kisilik_2.PNG
-                    [2] => /images/cars/sprinter10kisilik/sprinter10kisilik_3.PNG
-                    [3] => /images/cars/sprinter10kisilik/sprinter10kisilik_4.PNG
+                    [0] => /images/cars/standartvip/standartvip_1.PNG
+                    [1] => /images/cars/standartvip/standartvip_2.PNG
+                    [2] => /images/cars/standartvip/standartvip_3.PNG
+                    [3] => /images/cars/standartvip/standartvip_4.PNG
                 )
 
             [services] => Array
                 (
-                    [0] => 10 Kişilik
-                    [1] => Konforlu Oturma
-                    [2] => Klima
+                    [0] => WiFi
+                    [1] => İçecek
+                    [2] => Derin Temizlik
                 )
 
-            [price] => 119
+            [price] => 9
         )
 
-    [created_at] => 2025-05-26T13:35:31.122Z
+    [created_at] => 2025-05-29T11:10:23.958Z
 )

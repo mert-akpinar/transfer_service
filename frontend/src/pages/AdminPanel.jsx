@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import jsPDF from "jspdf";
-import "jspdf-autotable";
+import autoTable from "jspdf-autotable";
 import * as XLSX from "xlsx";
-
-const statusOptions = [
-  "Beklemede",
-  "Rezervasyon Onaylandı",
-  "Rezervasyon Gerçekleşti",
-  "Rezervasyon İptal Edildi"
-];
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -87,23 +82,84 @@ export default function AdminPanel({ token, onLogout }) {
     setCurrentPage(1);
   }, [search, reservations]);
 
-  const handleStatusChange = (index, newStatus) => {
-    const updated = [...filtered];
-    const globalIndex = (currentPage - 1) * ITEMS_PER_PAGE + index;
-    updated[globalIndex].status = newStatus;
-    setFiltered([...updated]);
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(filtered);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Rezervasyonlar");
+    XLSX.writeFile(workbook, "rezervasyonlar.xlsx");
+  };
 
+  pdfMake.vfs = pdfFonts.vfs;
+
+  const exportToPDF = () => {
+    const tableBody = [
+      [
+        "#", "Ad", "Email", "Telefon", "Araç", "Fiyat",
+        "Pickup", "Dropoff", "Alış", "Varış", "Tarih", "Saat",
+        "Yetişkin", "Çocuk", "Para", "Ekstralar", "Not"
+      ],
+      ...filtered.map((r, i) => [
+        i + 1,
+        r?.name || "-",
+        r?.email || "-",
+        r?.phone || "-",
+        r?.selected_car?.name || "-",
+        r?.selected_car?.price != null ? String(r.selected_car.price) : "-",
+        r?.pickup || "-",
+        r?.dropoff || "-",
+        r?.from || "-",
+        r?.to || "-",
+        r?.date || "-",
+        r?.time || "-",
+        r?.adults != null ? String(r.adults) : "-",
+        r?.children != null ? String(r.children) : "-",
+        r?.currency || "-",
+        Array.isArray(r?.extras) ? r.extras.join(", ") : (r.extras || "-"),
+        r?.note || "-"
+      ])
+    ];
+
+    const docDefinition = {
+      pageSize: 'A3',
+      pageOrientation: 'landscape',
+      content: [
+        { text: "Rezervasyonlar", style: "header" },
+        {
+          table: {
+            headerRows: 1,
+            widths: [
+              '3%', '8%', '10%', '8%', '8%', '5%', '6%', '6%', '6%',
+              '6%', '5%', '5%', '4%', '4%', '4%', '7%', '5%'
+            ],
+            body: tableBody
+          },
+          fontSize: 8
+        }
+      ],
+      styles: {
+        header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] }
+      }
+    };
+
+    pdfMake.createPdf(docDefinition).download("rezervasyonlar.pdf");
+  };
+
+  const updateStatus = (index, status) => {
     fetch("http://localhost/transfer_service/backend/routes/update-status.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ index: globalIndex, status: newStatus })
+      body: JSON.stringify({ index, status }),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (!data.success) {
-          showNotification("Durum güncellenemedi!", "error");
+        if (data.success) {
+          const updated = [...reservations];
+          updated[index].status = status;
+          setReservations(updated);
+          setFiltered(updated);
+          showNotification(`Durum güncellendi: ${status}`, "success");
         } else {
-          showNotification("Durum güncellendi!", "success");
+          showNotification("Durum güncellenemedi", "error");
         }
       })
       .catch(() => showNotification("Sunucu hatası", "error"));
@@ -117,21 +173,12 @@ export default function AdminPanel({ token, onLogout }) {
 
   return (
     <div className="dashboard">
-      {notification && (
-        <div className={`notification ${notification.type}`}>
-          {notification.message}
-        </div>
-      )}
-
-      <aside className="sidebar">
-        <h2>Admin Panel</h2>
-        <nav>
-          <a href="#" className="active">Rezervasyonlar</a>
-          <a href="#">Charts</a>
-        </nav>
-      </aside>
-
       <main className="main-content">
+        {notification && (
+          <div className={`notification ${notification.type}`}>
+            {notification.message}
+          </div>
+        )}
         <header className="topbar">
           <h1>Rezervasyonlar ({filtered.length})</h1>
         </header>
@@ -154,66 +201,95 @@ export default function AdminPanel({ token, onLogout }) {
           </button>
         </section>
 
-        <section className="table-wrapper">
-  <table className="reservation-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Ad</th>
-        <th>Email</th>
-        <th>Telefon</th>
-        <th>Araç</th>
-        <th>Fiyat</th>
-        <th>Pickup</th>
-        <th>Dropoff</th>
-        <th>Alış</th>
-        <th>Varış</th>
-        <th>Tarih</th>
-        <th>Saat</th>
-        <th>Yetişkin</th>
-        <th>Çocuk</th>
-        <th>Para</th>
-        <th>Ekstralar</th>
-        <th>Not</th>
-      </tr>
-    </thead>
-    <tbody>
-      {currentItems.map((r, index) => (
-        <tr key={index}>
-          <td>{(currentPage - 1) * ITEMS_PER_PAGE + index + 1}</td>
-          <td>{r.name}</td>
-          <td>{r.email}</td>
-          <td>{r.phone}</td>
-          <td>{r.selected_car?.name || "-"}</td>
-          <td>{r.selected_car?.price || "-"}</td>
-          <td>{r.pickup}</td>
-          <td>{r.dropoff}</td>
-          <td>{r.from}</td>
-          <td>{r.to}</td>
-          <td>{r.date}</td>
-          <td>{r.time}</td>
-          <td>{r.adults}</td>
-          <td>{r.children}</td>
-          <td>{r.currency}</td>
-          <td>{(r.extras || []).join(", ") || "-"}</td>
-          <td>{r.note || "-"}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+        <section className="filters">
+          <div className="search-export-wrapper">
+            <input
+              type="text"
+              placeholder="Filtreleme"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button onClick={exportToExcel} className="export-button">Excel'e Aktar</button>
+            <button onClick={exportToPDF} className="export-button">PDF'e Aktar</button>
+          </div>
+        </section>
 
-  <div className="pagination">
-    {Array.from({ length: pageCount }, (_, i) => (
-      <button
-        key={i + 1}
-        className={currentPage === i + 1 ? "active" : ""}
-        onClick={() => setCurrentPage(i + 1)}
-      >
-        {i + 1}
-      </button>
-    ))}
-  </div>
-</section>
+        <section className="table-wrapper">
+          <table className="reservation-table">
+            <thead>
+              <tr>
+                <th>⋮</th>
+                <th>#</th>
+                <th>Ad</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Araç</th>
+                <th>Fiyat</th>
+                <th>Pickup</th>
+                <th>Dropoff</th>
+                <th>Alış</th>
+                <th>Varış</th>
+                <th>Tarih</th>
+                <th>Saat</th>
+                <th>Yetişkin</th>
+                <th>Çocuk</th>
+                <th>Para</th>
+                <th>Ekstralar</th>
+                <th>Not</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentItems.map((r, index) => (
+                <tr key={index} className={`status-${(r.status || "")
+  .toLowerCase()
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "") // Türkçe karakterleri kaldır
+  .replace(/[^\w\s-]/g, "") // Özel karakterleri sil
+  .replaceAll(" ", "-")}`}>
+                  <td>
+                    <div className="dropdown">
+                      <button className="dropdown-toggle">⋮</button>
+                      <div className="dropdown-menu">
+                        <button onClick={() => updateStatus((currentPage - 1) * ITEMS_PER_PAGE + index, "Rezervasyon Gerçekleşti")}>Rezervasyon Gerçekleşti</button>
+                        <button onClick={() => updateStatus((currentPage - 1) * ITEMS_PER_PAGE + index, "Rezervasyon İptal Edildi")}>Rezervasyon İptal Edildi</button>
+                        <button onClick={() => updateStatus((currentPage - 1) * ITEMS_PER_PAGE + index, "Rezervasyon Beklemede")}>Rezervasyon Beklemede</button>
+                      </div>
+                    </div>
+                  </td>
+                  <td>{(currentPage - 1) * ITEMS_PER_PAGE + index + 1}</td>
+                  <td>{r.name}</td>
+                  <td>{r.email}</td>
+                  <td>{r.phone}</td>
+                  <td>{r.selected_car?.name || "-"}</td>
+                  <td>{r.selected_car?.price || "-"}</td>
+                  <td>{r.pickup}</td>
+                  <td>{r.dropoff}</td>
+                  <td>{r.from}</td>
+                  <td>{r.to}</td>
+                  <td>{r.date}</td>
+                  <td>{r.time}</td>
+                  <td>{r.adults}</td>
+                  <td>{r.children}</td>
+                  <td>{r.currency}</td>
+                  <td>{(r.extras || []).join(", ") || "-"}</td>
+                  <td>{r.note || "-"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="pagination">
+            {Array.from({ length: pageCount }, (_, i) => (
+              <button
+                key={i + 1}
+                className={currentPage === i + 1 ? "active" : ""}
+                onClick={() => setCurrentPage(i + 1)}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );

@@ -18,6 +18,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 file_put_contents(__DIR__ . '/../log.txt', print_r($data, true));
 
+// Temel alan kontrolleri
 if (
     !$data || 
     !isset($data['name']) || 
@@ -32,5 +33,28 @@ if (
     sendResponse(['error' => 'Eksik veya geçersiz veri'], 400);
 }
 
-saveReservation($data);
-sendResponse(['success' => true]);
+// reservations.json dosyasını yükle
+$file = __DIR__ . '/../data/reservations.json';
+$reservations = [];
+
+if (file_exists($file)) {
+    $reservations = json_decode(file_get_contents($file), true);
+}
+
+// En büyük id'yi bul ve 1 artır
+$maxId = 0;
+foreach ($reservations as $reservation) {
+    if (isset($reservation['id']) && $reservation['id'] > $maxId) {
+        $maxId = $reservation['id'];
+    }
+}
+
+$data['id'] = $maxId + 1;
+
+// Yeni rezervasyonu ekle
+$reservations[] = $data;
+
+// JSON dosyasını güncelle
+file_put_contents($file, json_encode($reservations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+sendResponse(['success' => true, 'id' => $data['id']]);
